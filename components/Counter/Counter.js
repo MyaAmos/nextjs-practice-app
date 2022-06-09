@@ -10,6 +10,7 @@ import {
 import { Button, Input, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import styles from "./Counter.module.css";
+import store from '../../pages/app/store'
 
 export function Counter() {
   const count = useSelector(selectCount);

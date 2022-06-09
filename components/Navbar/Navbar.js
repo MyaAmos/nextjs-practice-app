@@ -26,8 +26,9 @@ const Navbar = () => {
           </Typography>
           <Link href='/' color='white' underline='hover' className={navStyles.navlink}>Home</Link>
           <Link href='/posts' color='white' underline='hover' className={navStyles.navlink}>Posts</Link>
-          <Link href='/contact' color='white' underline='hover' className={navStyles.navlink}>Contact</Link>
+          {/* <Link href='/contact' color='white' underline='hover' className={navStyles.navlink}>Contact</Link> */}
           <Link href='/counter' color='white' underline='hover' className={navStyles.navlink}>Counter</Link>
+          <Link href='/todo' color='white' underline='hover' className={navStyles.navlink}>Todo</Link>
         </Toolbar>
       </AppBar>
     </Box>
