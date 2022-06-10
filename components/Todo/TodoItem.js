@@ -14,6 +14,7 @@ import { availableColors, capitalize } from "../../pages/features/todo/colors";
 
 const TodoItem = (props) => {
   const [newColor, setNewColor] = useState(props.color);
+  const dispatch = useDispatch();
   const handleChange = (event) => {
     dispatch({
       type: "todos/colorChange",
@@ -21,7 +22,6 @@ const TodoItem = (props) => {
     });
   };
 
-  const dispatch = useDispatch();
   return (
     <Grid container>
       <Grid item xs={1} />
@@ -53,7 +53,7 @@ const TodoItem = (props) => {
             >
                 {availableColors.map((c) => {
                     return(
-                        <MenuItem value={c} divider='true' >{c}</MenuItem>
+                        <MenuItem value={c} divider >{c}</MenuItem>
                     );
                 })}
             </Select>

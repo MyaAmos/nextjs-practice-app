@@ -13,11 +13,12 @@ import store from "../../pages/app/store";
 import styles from "./Todo.module.css";
 import TodoItem from "./TodoItem";
 import { selectTodos } from "../../pages/features/todo/todosSlice";
+import TodoFooter from "./TodoFooter";
 
 const Todo = () => {
   const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
-  const unsubscribe = store.subscribe(() => console.log("Subscribed"));
+  // const unsubscribe = store.subscribe(() => console.log("TOdos:" , todos));
 
   const [newTodo, setNewTodo] = useState();
 
@@ -50,7 +51,7 @@ const Todo = () => {
         </Grid>
       </Grid>
       <div className={styles.todoList}>
-        {todos.map((todo) => {
+        {todos.length > 0 && todos.map((todo) => {
           return (
             <div key={todo.id}>
               <TodoItem
@@ -62,8 +63,21 @@ const Todo = () => {
             </div>
           );
         })}
+        {todos.length === 0 && <div><Typography variant="h5" align="center">No Todo List Items</Typography></div>}
+        {/* {todos.map((todo) => {
+          return (
+            <div key={todo.id}>
+              <TodoItem
+                id={todo.id}
+                text={todo.text}
+                completed={todo.completed}
+                color={todo.color}
+              />
+            </div>
+          );
+        })} */}
       </div>
-
+        <TodoFooter />
     </div>
   );
 };
