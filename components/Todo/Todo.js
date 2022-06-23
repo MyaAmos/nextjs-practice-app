@@ -29,11 +29,13 @@ const Todo = () => {
           Todo
         </Typography>
       </div>
-      <Grid container direction="column" spacing={4} alignItems="center">
-        <Grid item xs={4}>
+      <Grid container direction="column" spacing={4} alignItems="center" className={styles.todo_header}>
+        <Grid item xs={4} className={styles.input}>
           <Input
             aria-label="Set new todo"
+            placeholder="New Todo"
             value={newTodo}
+            fullWidth
             onChange={(e) => setNewTodo(e.target.value)}
           />
         </Grid>
@@ -51,33 +53,28 @@ const Todo = () => {
         </Grid>
       </Grid>
       <div className={styles.todoList}>
-        {todos.length > 0 && todos.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <TodoItem
-                id={todo.id}
-                text={todo.text}
-                completed={todo.completed}
-                color={todo.color}
-              />
-            </div>
-          );
-        })}
-        {todos.length === 0 && <div><Typography variant="h5" align="center">No Todo List Items</Typography></div>}
-        {/* {todos.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <TodoItem
-                id={todo.id}
-                text={todo.text}
-                completed={todo.completed}
-                color={todo.color}
-              />
-            </div>
-          );
-        })} */}
+        {todos.length > 0 &&
+          todos.map((todo) => {
+            return (
+              <div key={todo.id}>
+                <TodoItem
+                  id={todo.id}
+                  text={todo.text}
+                  completed={todo.completed}
+                  color={todo.color}
+                />
+              </div>
+            );
+          })}
+        {todos.length === 0 && (
+          <div>
+            <Typography variant="h5" align="center">
+              No Todo List Items
+            </Typography>
+          </div>
+        )}
       </div>
-        <TodoFooter />
+      <TodoFooter />
     </div>
   );
 };

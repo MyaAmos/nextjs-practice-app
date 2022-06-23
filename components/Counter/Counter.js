@@ -48,6 +48,8 @@ export function Counter() {
         <div className={styles.amt}>
           <Input
             aria-label="Set increment amount"
+            placeholder="Increment Amount"
+            fullWidth
             value={incrementAmount}
             onChange={(e) => setIncrementAmount(e.target.value)}
           />
