@@ -9,6 +9,7 @@ import {
   FormControl,
   InputLabel,
 } from "@mui/material";
+import styles from "./Todo.module.css";
 import { useDispatch } from "react-redux";
 import { availableColors, capitalize } from "../../pages/features/todo/colors";
 
@@ -27,7 +28,7 @@ const TodoItem = (props) => {
       <Grid item xs={1} />
       <Grid item xs={4}>
         <ListItem>
-          <Typography>{props.text}</Typography>
+          <Typography className={styles.todoTitle} variant="h6">{props.text}</Typography>
         </ListItem>
       </Grid>
       <Grid item xs={2}>

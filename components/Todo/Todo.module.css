@@ -4,6 +4,50 @@
 
 .todoList{
     margin: 40px 0;
-    border-style: solid;
+    /* border-style: solid; */
     
+}
+
+.todoTitle{
+    font-weight: bold;
+}
+
+.footer{
+    display: flex;
+}
+
+.colorFilters{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.actionButtons{
+    display: flex;
+    flex-direction: column;
+}
+
+.actions{
+    padding: 0 20px;
+}
+.remaining{
+    padding: 0 20px;
+    text-align: center;
+}
+
+.status{
+    padding: 0 20px;
+    text-align: center;
+}
+
+.status li{
+    list-style: none;
+}
+
+.actions_title{
+    text-align: center;
+}
+
+.colorFilter{
+    text-align: center;
 }

@@ -8,6 +8,7 @@ import {
   selectColors,
   selectStatus,
 } from "../../pages/features/todo/filtersSlice";
+import styles from "./Todo.module.css";
 import { selectUncompletedTodos } from "../../pages/features/todo/todosSlice";
 
 const TodoFooter = () => {
@@ -20,7 +21,7 @@ const TodoFooter = () => {
     const suffix = count === 1 ? "" : "s";
 
     return (
-      <div>
+      <div className={styles.remaining}>
         <h5>Remaining Todos</h5>
         <strong>{count}</strong> item{suffix} left
       </div>
@@ -42,8 +43,8 @@ const TodoFooter = () => {
       );
     });
     return (
-      <div className="filters statusFilters">
-        <h5>Filter by Status</h5>
+      <div className={styles.status}>
+        <h5 >Filter by Status</h5>
         <ul>{renderedFilters}</ul>
       </div>
     );
@@ -59,11 +60,7 @@ const TodoFooter = () => {
 
       return (
         <label key={color}>
-          <Checkbox
-            name={color}
-            checked={checked}
-            onChange={handleChange}
-          />
+          <Checkbox name={color} checked={checked} onChange={handleChange} />
           <span
             className="color-block"
             style={{
@@ -75,9 +72,9 @@ const TodoFooter = () => {
       );
     });
     return (
-      <div className="filters colorFilters">
-        <h5>Filter by Color</h5>
-        <form className="colorSelection">{renderedColors}</form>
+      <div>
+        <h5 className={styles.colorFilter}>Filter by Color</h5>
+        <form className={styles.colorFilters}>{renderedColors}</form>
       </div>
     );
   };
@@ -98,30 +95,36 @@ const TodoFooter = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="actions">
-        <h5>Actions</h5>
-        <Button
-          className="button"
-          onClick={() => {
-            dispatch({ type: 'todos/allCompleted'})
-          }}
-        >
-          Mark All Completed
-        </Button>
-        <Button
-          className="button"
-          onClick={() => {
-            dispatch({ type: "todos/completedCleared"})
-          }}
-        >
-          Clear Completed
-        </Button>
+    <footer className={styles.footer}>
+      <div className={styles.actions}>
+        <h5 className={styles.actions_title}>Actions</h5>
+        <div className={styles.actionButtons}>
+          <Button
+            className={styles.bttn}
+            onClick={() => {
+              dispatch({ type: "todos/allCompleted" });
+            }}
+          >
+            Mark All Completed
+          </Button>
+          <Button
+            className={styles.bttn}
+            onClick={() => {
+              dispatch({ type: "todos/completedCleared" });
+            }}
+          >
+            Clear Completed
+          </Button>
+        </div>
       </div>
 
-      <RemainingTodos count={todosRemaining} />
+      <RemainingTodos count={todosRemaining}/>
       <StatusFilter value={status} onChange={onStatusChange} />
-      <ColorFilters value={colors} onChange={onColorChange} />
+      <ColorFilters
+        value={colors}
+        onChange={onColorChange}
+        className={styles.colorFilters}
+      />
     </footer>
   );
 };
